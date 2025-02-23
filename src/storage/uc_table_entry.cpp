@@ -67,6 +67,7 @@ TableFunction UCTableEntry::GetScanFunction(ClientContext &context, unique_ptr<F
 		};
 		info.scope = {table_data->storage_location};
 		secret_manager.CreateSecret(context, info);
+		throw NotImplementedException("Debugging Panic By Xiaobin");
 	}
 	named_parameter_map_t param_map;
 	vector<LogicalType> return_types;

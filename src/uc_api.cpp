@@ -118,6 +118,7 @@ static string GetCredentialsRequest(const string &url, const string &table_id, c
 
 	curl = curl_easy_init();
 	if (curl) {
+		curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 		curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, GetRequestWriteCallback);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);

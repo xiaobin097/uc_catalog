@@ -11,7 +11,6 @@
 #include "duckdb/parser/tableref/table_function_ref.hpp"
 #include "uc_api.hpp"
 #include "../../duckdb/third_party/catch/catch.hpp"
-#include "duckdb/logging/logger.hpp"
 
 namespace duckdb {
 
@@ -66,11 +65,6 @@ TableFunction UCTableEntry::GetScanFunction(ClientContext &context, unique_ptr<F
 		    {"session_token", table_credentials.session_token},
 		    {"region", uc_catalog.credentials.aws_region},
 		};
-		DUCKDB_LOG_INFO(context, "For table_id", table_data->table_id);
-		DUCKDB_LOG_INFO(context, "Using key_id", table_credentials.key_id);
-		DUCKDB_LOG_INFO(context, "Using secret", table_credentials.secret);
-		DUCKDB_LOG_INFO(context, "Using session token", table_credentials.session_token);
-		DUCKDB_LOG_INFO(context, "For scope", table_data->storage_location);
 		info.scope = {table_data->storage_location};
 		secret_manager.CreateSecret(context, info);
 	}

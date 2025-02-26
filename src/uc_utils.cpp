@@ -31,16 +31,10 @@ string UCUtils::TypeToString(const LogicalType &input) {
 LogicalType UCUtils::TypeToLogicalType(ClientContext &context, const string &type_text) {
 	if (type_text == "tinyint") {
 		return LogicalType::TINYINT;
-	} else if (type_text == "byte") {
-		return LogicalType::TINYINT;
 	} else if (type_text == "smallint") {
-		return LogicalType::SMALLINT;
-	} else if (type_text == "short") {
 		return LogicalType::SMALLINT;
 	} else if (type_text == "bigint") {
 		return LogicalType::BIGINT;
-	} else if (type_text == "integer") {
-		return LogicalType::INTEGER;
 	} else if (type_text == "int") {
 		return LogicalType::INTEGER;
 	} else if (type_text == "long") {

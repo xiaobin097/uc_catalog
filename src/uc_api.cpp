@@ -79,7 +79,7 @@ static string GetRequest(const string &url, const string &token = "") {
 			long http_code = 0;
 			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
 			if (http_code != 200) {
-				throw IOException("Curl Request to '%s' returned non-200: '%s'", url, http_code);
+				throw IOException("Curl Request to '%s' returned non-200: '%d'", url, http_code);
 			}
 		}
 		return readBuffer;
@@ -148,7 +148,7 @@ static string GetCredentialsRequest(const string &url, const string &table_id, c
 			long http_code = 0;
 			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
 			if (http_code != 200) {
-				throw IOException("Curl Request to '%s' returned non-200: '%s'", url, http_code);
+				throw IOException("Curl Request to '%s' returned non-200: '%d'", url, http_code);
 			}
 		}
 		return readBuffer;

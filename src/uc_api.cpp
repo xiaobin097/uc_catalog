@@ -75,6 +75,12 @@ static string GetRequest(const string &url, const string &token = "") {
 		if (res != CURLcode::CURLE_OK) {
 			string error = curl_easy_strerror(res);
 			throw IOException("Curl Request to '%s' failed with error: '%s'", url, error);
+		} else {
+			long http_code = 0;
+			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+			if (http_code != 200) {
+				throw IOException("Curl Request to '%s' returned non-200: '%d'", url, http_code);
+			}
 		}
 		return readBuffer;
 	}
@@ -138,6 +144,12 @@ static string GetCredentialsRequest(const string &url, const string &table_id, c
 		if (res != CURLcode::CURLE_OK) {
 			string error = curl_easy_strerror(res);
 			throw IOException("Curl Request to '%s' failed with error: '%s'", url, error);
+		} else {
+			long http_code = 0;
+			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+			if (http_code != 200) {
+				throw IOException("Curl Request to '%s' returned non-200: '%d'", url, http_code);
+			}
 		}
 		return readBuffer;
 	}

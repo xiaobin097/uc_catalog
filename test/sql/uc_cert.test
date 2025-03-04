@@ -22,5 +22,7 @@ statement ok
 ATTACH 'unity' AS unity (TYPE UC_CATALOG);
 
 # This would throw SSL cert error if ssl cert is not properly found
-statement ok
+statement error
 SELECT database_name, schema_name, table_name FROM duckdb_tables() where database_name='unity' order by table_name;
+----
+IO Error: Curl Request to 'https://duckdb.org/api/2.1/unity-catalog/schemas?catalog_name=unity' returned non-200: '404'
